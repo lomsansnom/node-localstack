@@ -74,3 +74,4 @@ s3.listBuckets({}, (err, data) => {
 
 * Handle AWS SDK options
 * Unit tests
+* Makes it easier
