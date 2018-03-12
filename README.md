@@ -74,4 +74,4 @@ s3.listBuckets({}, (err, data) => {
 
 * Handle AWS SDK options
 * Unit tests
-* Makes it easier
+* Makes it easier to switch between AWS SDK and localstack
