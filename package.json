@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/lomsansnom/aws-localstack.git"
+    "url": "git+ssh://git@github.com/lomsansnom/node-localstack.git"
   },
   "author": "Alexandre Cathalan",
   "license": "MIT",
