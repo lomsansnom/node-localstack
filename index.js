@@ -1,6 +1,6 @@
 'use strict';
 
-const services = require('./src/services');
+import services from './src/services';
 
 // const endpoints = {
 //     'APIGateway': '',
@@ -20,7 +20,7 @@ const services = require('./src/services');
 //     'SSM': ''
 // };
 
-module.exports = (endpoints) => {
+export default (endpoints) => {
   endpoints = endpoints || {};
   return services(endpoints);
 };

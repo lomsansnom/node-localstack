@@ -1,8 +1,14 @@
 'use strict';
 
-const AWS = require('aws-sdk');
+import AWS from 'aws-sdk';
 
-module.exports = (endpoint) => {
-  const ep = new AWS.Endpoint(endpoint || 'http://localhost:4575');
-  return new AWS.SNS({ endpoint: ep });
+export default endpoint => class SNS extends AWS.SNS {
+  constructor(options) {
+    options = options || {};
+    if (!options.endpoint) {
+      const ep = new AWS.Endpoint(endpoint || 'http://localhost:4575');
+      options.endpoint = ep;
+    }
+    super(options);
+  }
 };

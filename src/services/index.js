@@ -1,22 +1,22 @@
 'use strict';
 
-const APIGateway = require('./APIGateway');
-const CloudFormation = require('./CloudFormation');
-const CloudWatch = require('./CloudWatch');
-const DynamoDB = require('./DynamoDB');
-const ES = require('./ES');
-const Firehose = require('./Firehose');
-const Kinesis = require('./Kinesis');
-const Lambda = require('./Lambda');
-const Redshift = require('./Redshift');
-const Route53 = require('./Route53');
-const S3 = require('./S3');
-const SES = require('./SES');
-const SNS = require('./SNS');
-const SQS = require('./SQS');
-const SSM = require('./SSM');
+import APIGateway from './APIGateway';
+import CloudFormation from './CloudFormation';
+import CloudWatch from './CloudWatch';
+import DynamoDB from './DynamoDB';
+import ES from './ES';
+import Firehose from './Firehose';
+import Kinesis from './Kinesis';
+import Lambda from './Lambda';
+import Redshift from './Redshift';
+import Route53 from './Route53';
+import S3 from './S3';
+import SES from './SES';
+import SNS from './SNS';
+import SQS from './SQS';
+import SSM from './SSM';
 
-module.exports = endpoints => ({
+export default endpoints => ({
   APIGateway: APIGateway(endpoints.APIGateway),
   CloudFormation: CloudFormation(endpoints.CloudFormation),
   CloudWatch: CloudWatch(endpoints.CloudWatch),

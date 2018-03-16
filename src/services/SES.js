@@ -1,8 +1,14 @@
 'use strict';
 
-const AWS = require('aws-sdk');
+import AWS from 'aws-sdk';
 
-module.exports = (endpoint) => {
-  const ep = new AWS.Endpoint(endpoint || 'http://localhost:4579');
-  return new AWS.SES({ endpoint: ep });
+export default endpoint => class SES extends AWS.SES {
+  constructor(options) {
+    options = options || {};
+    if (!options.endpoint) {
+      const ep = new AWS.Endpoint(endpoint || 'http://localhost:4579');
+      options.endpoint = ep;
+    }
+    super(options);
+  }
 };

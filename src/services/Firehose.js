@@ -1,8 +1,14 @@
 'use strict';
 
-const AWS = require('aws-sdk');
+import AWS from 'aws-sdk';
 
-module.exports = (endpoint) => {
-  const ep = new AWS.Endpoint(endpoint || 'http://localhost:4573');
-  return new AWS.Firehose({ endpoint: ep });
+export default endpoint => class Firehose extends AWS.Firehose {
+  constructor(options) {
+    options = options || {};
+    if (!options.endpoint) {
+      const ep = new AWS.Endpoint(endpoint || 'http://localhost:4573');
+      options.endpoint = ep;
+    }
+    super(options);
+  }
 };

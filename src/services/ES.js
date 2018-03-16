@@ -2,9 +2,15 @@
 
 // Local elasticSearch 4571
 
-const AWS = require('aws-sdk');
+import AWS from 'aws-sdk';
 
-module.exports = (endpoint) => {
-  const ep = new AWS.Endpoint(endpoint || 'http://localhost:4578');
-  return new AWS.ES({ endpoint: ep });
+export default endpoint => class ES extends AWS.ES {
+  constructor(options) {
+    options = options || {};
+    if (!options.endpoint) {
+      const ep = new AWS.Endpoint(endpoint || 'http://localhost:4578');
+      options.endpoint = ep;
+    }
+    super(options);
+  }
 };

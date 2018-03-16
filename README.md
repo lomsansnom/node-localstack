@@ -54,16 +54,16 @@ const endpoints = {
   'SSM': 'http://localhost:4215'
 };
 
-const localstack = require('node-localstack')(endpoints);
+const AWS = require('node-localstack')(endpoints);
 
 //...
 
-const <SERVICE> = localstack.<SERVICE>
+const <SERVICE> = new AWS.<SERVICE>(options)
 // Use <SERVICE> variable as you would use it with AWS SDK. Just keep in mind that you won't have
 // access to all services but only the ones provided by localstack and supported by this library
 
 // S3 example
-const s3 = localstack.S3;
+const s3 = new AWS.S3();
 s3.listBuckets({}, (err, data) => {
   // ...
 });
@@ -72,6 +72,4 @@ s3.listBuckets({}, (err, data) => {
 
 ## TODO
 
-* Handle AWS SDK options
 * Unit tests
-* Makes it easier to switch between AWS SDK and localstack

@@ -1,8 +1,14 @@
 'use strict';
 
-const AWS = require('aws-sdk');
+import AWS from 'aws-sdk';
 
-module.exports = (endpoint) => {
-  const ep = new AWS.Endpoint(endpoint || 'http://localhost:4581');
-  return new AWS.CloudFormation({ endpoint: ep });
+export default endpoint => class CloudFormation extends AWS.CloudFormation {
+  constructor(options) {
+    options = options || {};
+    if (!options.endpoint) {
+      const ep = new AWS.Endpoint(endpoint || 'http://localhost:4581');
+      options.endpoint = ep;
+    }
+    super(options);
+  }
 };

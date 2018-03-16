@@ -1,8 +1,14 @@
 'use strict';
 
-const AWS = require('aws-sdk');
+import AWS from 'aws-sdk';
 
-module.exports = (endpoint) => {
-  const ep = new AWS.Endpoint(endpoint || 'http://localhost:4583');
-  return new AWS.SSM({ endpoint: ep });
+export default endpoint => class SSM extends AWS.SSM {
+  constructor(options) {
+    options = options || {};
+    if (!options.endpoint) {
+      const ep = new AWS.Endpoint(endpoint || 'http://localhost:4583');
+      options.endpoint = ep;
+    }
+    super(options);
+  }
 };
